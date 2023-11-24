@@ -6,10 +6,12 @@ public class Player2Controller : MonoBehaviour
 {
     private Rigidbody2D rb;
     public float movescale;
+    private Animator animator;
+    
     // Start is called before the first frame update
     void Start()
     {
-        
+        animator = GetComponent<Animator>();
         rb = this.gameObject.GetComponent<Rigidbody2D>();
     }
 
@@ -24,5 +26,7 @@ public class Player2Controller : MonoBehaviour
         float yMovement = Input.GetAxis("Vertical2");
         Vector2 movement = new Vector2(xMovement, yMovement);
         rb.AddForce(movescale*movement);
+        animator.SetInteger("X Input", Mathf.RoundToInt(xMovement));
+        animator.SetInteger("Y Input", Mathf.RoundToInt(yMovement));
     }
 }

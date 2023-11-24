@@ -19,7 +19,9 @@ public class PuckController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        fixedJoint = this.gameObject.GetComponent<FixedJoint2D>();
-        fixedJoint.connectedBody = collision.gameObject.GetComponent<Rigidbody2D>();
+        if (!collision.gameObject.name.Equals("Ice Rink")) {
+            fixedJoint = this.gameObject.GetComponent<FixedJoint2D>();
+            fixedJoint.connectedBody = collision.gameObject.GetComponent<Rigidbody2D>();
+        }
     }
 }
