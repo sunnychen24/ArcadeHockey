@@ -4,5 +4,11 @@ This project is an arcade hockey game created in Unity by [Sunny Chen](https://g
 
 ## Credits
 We want to thank the following creators for providing their assets for our game
+
+#### Sprites
 - [Hockey Players](https://opengameart.org/content/hockey-players)
 - [Air Hockey](https://opengameart.org/content/air-hockey)
+
+#### Sound Effects
+- [pixabay](https://pixabay.com/sound-effects/)
+- [mixkit](https://mixkit.co/free-sound-effects/)
