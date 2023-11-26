@@ -36,6 +36,8 @@ public class GameController : MonoBehaviour
         scoreText = GameObject.Find("Score").GetComponent<TextMeshProUGUI>();
         audioSource = GetComponent<AudioSource>();
 
+        timer = 60 * PlayerPrefs.GetInt("0");
+
         scoreText.text = p1Score.ToString() + ":" + p2Score.ToString();
         PauseGame(false);
     }
