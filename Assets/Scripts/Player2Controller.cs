@@ -46,5 +46,39 @@ public class Player2Controller : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.RightShift) && haspuck){
             shoot(movement);
         }
+
+        if (xMovement != 0)
+        {
+            if (xMovement > 0)
+            {
+                if (yMovement > 0)
+                {
+                    currentdir = direction.upright;
+                }
+                else if (yMovement < 0) { currentdir = direction.downright; }
+                else { currentdir = direction.right; }
+            }
+            else
+            {
+                if (yMovement > 0)
+                {
+                    currentdir = direction.upleft;
+                }
+                else if (yMovement < 0) { currentdir = direction.downleft; }
+                else { currentdir = direction.left; }
+            }
+        }
+
+        if (xMovement == 0 && yMovement != 0)
+        {
+            if (yMovement > 0)
+            {
+                currentdir = direction.up;
+            }
+            else
+            {
+                currentdir = direction.down;
+            }
+        }
     }
 }
