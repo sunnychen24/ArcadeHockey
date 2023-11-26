@@ -7,6 +7,10 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
     public float movescale;
     private Animator animator;
+    public float shotspeed;
+    public enum direction {up, upright, right, downright, down, downleft, left, upleft}
+    public direction currentdir = direction.right;
+    public bool haspuck = false;
 
     // Start is called before the first frame update
     void Start()
@@ -21,6 +25,15 @@ public class PlayerController : MonoBehaviour
         
     }
 
+    void shoot(Vector2 direction)
+    {
+        PuckController.fixedJoint.enabled = false;
+        PuckController.fixedJoint.connectedBody = null;
+        PuckController.rb.AddForce(shotspeed * direction);
+        PuckController.timesinceshot = 0;
+        haspuck = false;
+    }
+
     void FixedUpdate(){
 
         float xMovement = Input.GetAxis("Horizontal");
@@ -29,5 +42,41 @@ public class PlayerController : MonoBehaviour
         rb.AddForce(movescale*movement);
         animator.SetInteger("X Input", Mathf.RoundToInt(xMovement));
         animator.SetInteger("Y Input", Mathf.RoundToInt(yMovement));
+
+        if (Input.GetKeyDown(KeyCode.LeftShift) && haspuck ){
+            shoot(movement);
+        }
+
+        if (xMovement != 0)
+        {
+            if (xMovement > 0)
+            {
+                if (yMovement > 0)
+                {
+                    currentdir = direction.upright;
+                } else if (yMovement < 0) { currentdir = direction.downright; }
+                else { currentdir = direction.right; }
+            }
+            else
+            {
+                if (yMovement > 0)
+                {
+                    currentdir = direction.upleft;
+                } else if (yMovement < 0) { currentdir = direction.downleft; }
+                else { currentdir = direction.left; }
+            }
+        }
+
+        if (xMovement == 0 && yMovement != 0)
+        {
+            if (yMovement > 0)
+            {
+                currentdir = direction.up;
+            }
+            else
+            {
+                currentdir = direction.down;
+            }
+        }
     }
 }
