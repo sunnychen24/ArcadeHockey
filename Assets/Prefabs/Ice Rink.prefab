@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 2261754715613382181}
   - component: {fileID: 3043208458868868610}
   - component: {fileID: 6898463443384937519}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: Ice Rink
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -464,7 +464,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5522479762192145766}
   - component: {fileID: 1646468905295880920}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: Player 2 Net
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -541,7 +541,7 @@ GameObject:
   m_Component:
   - component: {fileID: 755692667745934927}
   - component: {fileID: 2420909075473036089}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: Player 1 Net
   m_TagString: Untagged
   m_Icon: {fileID: 0}

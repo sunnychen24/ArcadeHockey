@@ -138,6 +138,15 @@ public class GameController : MonoBehaviour
         audioSource.PlayOneShot(goalHorn, 0.5f);
         yield return new WaitForSecondsRealtime(6);
 
+        if (player == 0)
+        {
+            p1Score++;
+        }
+        else
+        {
+            p2Score++;
+        }
+
         if (overtime)
         {
             overtime = false;
@@ -159,22 +168,20 @@ public class GameController : MonoBehaviour
 
             if (player == 0)
             {
-                p1Score++;
                 puck.transform.position = new Vector3(5, 0, 0);
             }
             else
             {
-                p2Score++;
                 puck.transform.position = new Vector3(-5, 0, 0);
             }
 
             scoreText.text = p1Score.ToString() + ":" + p2Score.ToString();
+
+            audioSource.PlayOneShot(whistle, 0.5f);
+            yield return new WaitForSecondsRealtime(2);
+
+            Time.timeScale = 1;
         }
-
-        audioSource.PlayOneShot(whistle, 0.5f);
-        yield return new WaitForSecondsRealtime(2);
-
-        Time.timeScale = 1;
         
         yield return null;
     }
