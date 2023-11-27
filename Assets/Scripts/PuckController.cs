@@ -55,7 +55,7 @@ public class PuckController : MonoBehaviour
                 else if (player1.currentdir == PlayerController.direction.downright)
                     transform.position = Vector3.Lerp(transform.position, fixedJoint.connectedBody.transform.position + new Vector3(-0.2f, -1.0f, 0f), 0.06f);
             }
-            else if (player2.haspuck)
+            if (player2.haspuck)
             {
                 if (player2.currentdir == Player2Controller.direction.right)
                     transform.position = Vector3.Lerp(transform.position, fixedJoint.connectedBody.transform.position + new Vector3(0.5f, -0.8f, 0f), 0.06f);

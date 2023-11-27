@@ -8,9 +8,10 @@ public class Player2Controller : MonoBehaviour
     public float movescale;
     private Animator animator;
     public float shotspeed;
-    public enum direction { up, upright, right, downright, down, downleft, left, upleft }
+    public enum direction {up, upright, right, downright, down, downleft, left, upleft }
     public direction currentdir = direction.left;
     public bool haspuck = false;
+    private bool charging = false;
 
     // Start is called before the first frame update
     void Start()
@@ -34,17 +35,44 @@ public class Player2Controller : MonoBehaviour
         haspuck = false;
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.name.Equals("Player 1") && charging == true)
+        {
+            PuckController.fixedJoint.enabled = false;
+            PuckController.fixedJoint.connectedBody = null;
+            PuckController.timesinceshot = 0;
+            collision.gameObject.GetComponent<PlayerController>().haspuck = false;
+        }
+    }
+
     void FixedUpdate(){
 
         float xMovement = Input.GetAxis("Horizontal2");
         float yMovement = Input.GetAxis("Vertical2");
         Vector2 movement = new Vector2(xMovement, yMovement);
-        rb.AddForce(movescale*movement);
-        animator.SetInteger("X Input", Mathf.RoundToInt(xMovement));
-        animator.SetInteger("Y Input", Mathf.RoundToInt(yMovement));
+
+        if (charging == false)
+        {
+            rb.AddForce(movescale * movement);
+            animator.SetInteger("X Input", Mathf.RoundToInt(xMovement));
+            animator.SetInteger("Y Input", Mathf.RoundToInt(yMovement));
+        }
 
         if (Input.GetKeyDown(KeyCode.RightShift) && haspuck){
             shoot(movement);
+        }
+
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            rb.drag = 0;
+            charging = true;
+        }
+
+        if (Input.GetKeyUp(KeyCode.O))
+        {
+            rb.drag = 0.9f;
+            charging = false;
         }
 
         if (xMovement != 0)
