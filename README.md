@@ -8,6 +8,7 @@ We want to thank the following creators for providing their assets for our game
 #### Sprites
 - [Hockey Players](https://opengameart.org/content/hockey-players)
 - [Air Hockey](https://opengameart.org/content/air-hockey)
+- [Hit Animations](https://opengameart.org/content/pixelated-hit-animations)
 
 #### Sound Effects
 - [pixabay](https://pixabay.com/sound-effects/)
