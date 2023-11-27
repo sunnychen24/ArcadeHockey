@@ -12,6 +12,8 @@ public class PlayerController : MonoBehaviour
     public direction currentdir = direction.right;
     public bool haspuck = false;
     private bool charging = false;
+    public float stuntimer;
+    public Player2Controller player2;
 
     // Start is called before the first frame update
     void Start()
@@ -39,10 +41,12 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.name.Equals("Player 2") && charging == true)
         {
+            player2 = collision.gameObject.GetComponent<Player2Controller>();
             PuckController.fixedJoint.enabled = false;
             PuckController.fixedJoint.connectedBody = null;
             PuckController.timesinceshot = 0;
-            collision.gameObject.GetComponent<Player2Controller>().haspuck = false;
+            player2.haspuck = false;
+            player2.stuntimer = 2.0f;
         }
     }
 
@@ -52,11 +56,28 @@ public class PlayerController : MonoBehaviour
         float yMovement = Input.GetAxis("Vertical");
         Vector2 movement = new Vector2(xMovement, yMovement);
 
-        if (charging == false)
+        if (charging == false && stuntimer <= 0)
         {
-            rb.AddForce(movescale*movement);
+            rb.AddForce(movescale * movement);
             animator.SetInteger("X Input", Mathf.RoundToInt(xMovement));
             animator.SetInteger("Y Input", Mathf.RoundToInt(yMovement));
+        }
+
+        if (stuntimer > 0)
+        {
+            stuntimer -= Time.deltaTime;
+            if (stuntimer <= 0)
+                GetComponent<SpriteRenderer>().enabled = true;
+            else if (stuntimer < 0.33f)
+                GetComponent<SpriteRenderer>().enabled = false;
+            else if (stuntimer < 0.66f)
+                GetComponent<SpriteRenderer>().enabled = true;
+            else if (stuntimer < 1.0f)
+                GetComponent<SpriteRenderer>().enabled = false;
+            else if (stuntimer < 1.33f)
+                GetComponent<SpriteRenderer>().enabled = true;
+            else if (stuntimer < 1.66f)
+                GetComponent<SpriteRenderer>().enabled = false;
         }
 
         if (Input.GetKeyDown(KeyCode.LeftShift) && haspuck ){
