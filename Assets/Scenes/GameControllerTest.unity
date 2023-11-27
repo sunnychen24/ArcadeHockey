@@ -135,6 +135,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ice Rink
       objectReference: {fileID: 0}
+    - target: {fileID: 83737668733621915, guid: c10c24a0224da1a4098ea15613930c12, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8289231950038161956, guid: c10c24a0224da1a4098ea15613930c12, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -916,6 +920,38 @@ PrefabInstance:
     - target: {fileID: 303128060481815926, guid: 99d5e1ccf946fd24cb082698db499469, type: 3}
       propertyPath: m_Name
       value: Game Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 5046342868653677544, guid: 99d5e1ccf946fd24cb082698db499469, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5046342868653677544, guid: 99d5e1ccf946fd24cb082698db499469, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5046342868653677544, guid: 99d5e1ccf946fd24cb082698db499469, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5046342868653677544, guid: 99d5e1ccf946fd24cb082698db499469, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5518409176605622728, guid: 99d5e1ccf946fd24cb082698db499469, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5518409176605622728, guid: 99d5e1ccf946fd24cb082698db499469, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5518409176605622728, guid: 99d5e1ccf946fd24cb082698db499469, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5518409176605622728, guid: 99d5e1ccf946fd24cb082698db499469, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5786847865565750434, guid: 99d5e1ccf946fd24cb082698db499469, type: 3}
       propertyPath: m_Pivot.x
