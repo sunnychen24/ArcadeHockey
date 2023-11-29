@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     private bool charging = false;
     public float stuntimer;
     public Player2Controller player2;
+    public GameObject pokecheck;
 
     // Start is called before the first frame update
     void Start()
@@ -45,8 +46,36 @@ public class PlayerController : MonoBehaviour
             PuckController.fixedJoint.enabled = false;
             PuckController.fixedJoint.connectedBody = null;
             PuckController.timesinceshot = 0;
-            player2.haspuck = false;
             player2.stuntimer = 2.0f;
+
+            if (player2.haspuck)
+            {
+                if (player2.currentdir == Player2Controller.direction.left)
+                    PuckController.rb.AddForce(new Vector2(-1, 0) * 20);
+
+                else if (player2.currentdir == Player2Controller.direction.upleft)
+                    PuckController.rb.AddForce(new Vector2(-1, 1) * 20);
+
+                else if (player2.currentdir == Player2Controller.direction.up)
+                    PuckController.rb.AddForce(new Vector2(0, 1) * 20);
+
+                else if (player2.currentdir == Player2Controller.direction.upright)
+                    PuckController.rb.AddForce(new Vector2(1, 1) * 20);
+
+                else if (player2.currentdir == Player2Controller.direction.right)
+                    PuckController.rb.AddForce(new Vector2(1, 0) * 20);
+
+                else if (player2.currentdir == Player2Controller.direction.downright)
+                    PuckController.rb.AddForce(new Vector2(1, -1) * 20);
+
+                else if (player2.currentdir == Player2Controller.direction.down)
+                    PuckController.rb.AddForce(new Vector2(0, -1) * 20);
+
+                else if (player2.currentdir == Player2Controller.direction.downleft)
+                    PuckController.rb.AddForce(new Vector2(-1, -1) * 20);
+            }
+
+            player2.haspuck = false;
         }
     }
 
@@ -94,6 +123,33 @@ public class PlayerController : MonoBehaviour
         {
             rb.drag = 0.9f;
             charging = false;
+        }
+
+        if (Input.GetKeyDown(KeyCode.E) && haspuck == false)
+        {
+            if (currentdir == direction.downleft)
+                Instantiate(pokecheck, transform.position + new Vector3(-0.68f, -0.68f, 0), Quaternion.Euler(0,0,0));
+
+            else if (currentdir == direction.left)
+                Instantiate(pokecheck, transform.position + new Vector3(-0.97f, 0, 0), Quaternion.Euler(0, 0, -45));
+
+            else if (currentdir == direction.upleft)
+                Instantiate(pokecheck, transform.position + new Vector3(-0.68f, 0.68f, 0), Quaternion.Euler(0, 0, -90));
+
+            else if (currentdir == direction.up)
+                Instantiate(pokecheck, transform.position + new Vector3(0, 0.97f, 0), Quaternion.Euler(0, 0, -135));
+
+            else if (currentdir == direction.upright)
+                Instantiate(pokecheck, transform.position + new Vector3(0.68f, 0.68f, 0), Quaternion.Euler(0, 0, -180));
+
+            else if (currentdir == direction.right)
+                Instantiate(pokecheck, transform.position + new Vector3(0.97f, 0, 0), Quaternion.Euler(0, 0, -225));
+
+            else if (currentdir == direction.downright)
+                Instantiate(pokecheck, transform.position + new Vector3(0.68f, -0.68f, 0), Quaternion.Euler(0, 0, -270));
+
+            else if (currentdir == direction.down)
+                Instantiate(pokecheck, transform.position + new Vector3(0, -0.97f, 0), Quaternion.Euler(0, 0, -315));
         }
 
         if (xMovement != 0)

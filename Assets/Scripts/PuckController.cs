@@ -20,6 +20,7 @@ public class PuckController : MonoBehaviour
     {
         rb = this.gameObject.GetComponent<Rigidbody2D>();
         fixedJoint = this.gameObject.GetComponent<FixedJoint2D>();
+        fixedJoint.enabled = false;
         animator = GetComponent<Animator>();
     }
 
