@@ -7,7 +7,7 @@ public class CameraFollow : MonoBehaviour
     Rigidbody2D rb;
     private Transform puck;
     private FixedJoint2D player;
-    private List<Transform> players = new List<Transform>();
+    public List<Transform> players = new List<Transform>();
     public List<GameObject> playerIndicators = new List<GameObject>();
 
     // Start is called before the first frame update
@@ -16,10 +16,6 @@ public class CameraFollow : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         puck = GameObject.Find("Puck").transform;
         player = GameObject.Find("Puck").GetComponent<FixedJoint2D>();
-        players.Add(GameObject.Find("Player 1").GetComponent<Transform>());
-        players.Add(GameObject.Find("Player 2").GetComponent<Transform>());
-        playerIndicators.Add(GameObject.Find("Player 1 Indicator"));
-        playerIndicators.Add(GameObject.Find("Player 1 Indicator"));
     }
 
     private void FixedUpdate()

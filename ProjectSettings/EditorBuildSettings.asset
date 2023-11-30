@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GameControllerTest.unity
     guid: ba6e4a85faf5b32408cf7b2dbed0536e
+  - enabled: 1
+    path: Assets/Scenes/AiTest.unity
+    guid: 31acd4d9de13640488eff60d9e58449b
   m_configObjects: {}

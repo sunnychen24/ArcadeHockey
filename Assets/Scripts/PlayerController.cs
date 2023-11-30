@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     private bool charging = false;
     public float stuntimer;
     public Player2Controller player2;
+    public AiController ai;
     public GameObject pokecheck;
 
     // Start is called before the first frame update
@@ -76,6 +77,41 @@ public class PlayerController : MonoBehaviour
             }
 
             player2.haspuck = false;
+        }
+        else if (collision.gameObject.name.Equals("AI") && charging == true)
+        {
+            ai = collision.gameObject.GetComponent<AiController>();
+            PuckController.fixedJoint.enabled = false;
+            PuckController.fixedJoint.connectedBody = null;
+            PuckController.timesinceshot = 0;
+            ai.Stun();
+
+            if (ai.haspuck)
+            {
+                if (ai.currentdir == AiController.direction.left)
+                    PuckController.rb.AddForce(new Vector2(-1, 0) * 20);
+
+                else if (ai.currentdir == AiController.direction.upleft)
+                    PuckController.rb.AddForce(new Vector2(-1, 1) * 20);
+
+                else if (ai.currentdir == AiController.direction.up)
+                    PuckController.rb.AddForce(new Vector2(0, 1) * 20);
+
+                else if (ai.currentdir == AiController.direction.upright)
+                    PuckController.rb.AddForce(new Vector2(1, 1) * 20);
+
+                else if (ai.currentdir == AiController.direction.right)
+                    PuckController.rb.AddForce(new Vector2(1, 0) * 20);
+
+                else if (ai.currentdir == AiController.direction.downright)
+                    PuckController.rb.AddForce(new Vector2(1, -1) * 20);
+
+                else if (ai.currentdir == AiController.direction.down)
+                    PuckController.rb.AddForce(new Vector2(0, -1) * 20);
+
+                else if (ai.currentdir == AiController.direction.downleft)
+                    PuckController.rb.AddForce(new Vector2(-1, -1) * 20);
+            }
         }
     }
 

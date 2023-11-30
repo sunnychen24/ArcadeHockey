@@ -33,6 +33,10 @@ public class PokecheckController : MonoBehaviour
                     {
                         PuckController.fixedJoint.connectedBody.gameObject.GetComponent<Player2Controller>().haspuck = false;
                     }
+                    if (PuckController.fixedJoint.connectedBody.gameObject.name.Equals("AI"))
+                    {
+                        PuckController.fixedJoint.connectedBody.gameObject.GetComponent<AiController>().haspuck = false;
+                    }
                     PuckController.fixedJoint.enabled = false;
                     PuckController.fixedJoint.connectedBody = null;
                     PuckController.timesinceshot = 0;

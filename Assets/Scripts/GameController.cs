@@ -9,10 +9,10 @@ public class GameController : MonoBehaviour
 {
     private int p1Score = 0;
     private int p2Score = 0;
-    private GameObject player1;
-    private GameObject player2;
+    public GameObject player1;
+    public GameObject player2;
     private GameObject puck;
-    public float timer = 180;
+    private float timer = 180;
     private GameObject gameUI;
     private GameObject menuUI;
     private TextMeshProUGUI timerText;
@@ -27,8 +27,6 @@ public class GameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player1 = GameObject.Find("Player 1");
-        player2 = GameObject.Find("Player 2");
         puck = GameObject.Find("Puck");
         gameUI = GameObject.Find("Game Canvas");
         menuUI = GameObject.Find("Menu Canvas");
@@ -176,6 +174,13 @@ public class GameController : MonoBehaviour
             }
 
             scoreText.text = p1Score.ToString() + ":" + p2Score.ToString();
+
+            player1.GetComponent<PlayerController>().haspuck = false;
+
+            if (player2.name.Equals("AI"))
+            {
+                player2.GetComponent<AiController>().ResetState();
+            }
 
             audioSource.PlayOneShot(whistle, 0.5f);
             yield return new WaitForSecondsRealtime(2);

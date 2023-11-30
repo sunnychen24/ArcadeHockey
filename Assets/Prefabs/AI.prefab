@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 2503095394647807926}
   - component: {fileID: -7895517538084003816}
   - component: {fileID: 3980506544751241826}
-  - component: {fileID: 6596293463493505980}
+  - component: {fileID: 2815368884827062813}
   m_Layer: 0
-  m_Name: Player 2
+  m_Name: AI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -181,7 +181,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &6596293463493505980
+--- !u!114 &2815368884827062813
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -190,13 +190,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 3240935052892630596}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 387d8e6999f7b498fa3c7f4b3d8c4b55, type: 3}
+  m_Script: {fileID: 11500000, guid: c0273aa02ec774d4b9ec8b139cf7a8de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movescale: 3
-  shotspeed: 0
   currentdir: 6
+  state: 0
   haspuck: 0
-  stuntimer: 0
-  player1: {fileID: 0}
-  pokecheck: {fileID: 0}
+  player: {fileID: 0}
+  puck: {fileID: 0}
+  pokecheck: {fileID: 1092421517637766156, guid: 9e1b28aac9252c0439a5fd19d375174a, type: 3}
+  statsList:
+  - {fileID: 11400000, guid: c9e8e3516d7109b4197c28a75a69e584, type: 2}
+  - {fileID: 11400000, guid: 9abee0e5f9130614f83f82d10e91da58, type: 2}
+  - {fileID: 11400000, guid: 18b83fda07fd3414ca7534061290a321, type: 2}
+  - {fileID: 11400000, guid: 38d9de3521d0cdd4fa520c743d7f3fd2, type: 2}
