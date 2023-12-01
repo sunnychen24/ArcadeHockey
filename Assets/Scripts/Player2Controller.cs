@@ -15,6 +15,7 @@ public class Player2Controller : MonoBehaviour
     public float stuntimer;
     public PlayerController player1;
     public GameObject pokecheck;
+    private Vector2 movement = Vector2.zero;
 
     // Start is called before the first frame update
     void Start()
@@ -26,7 +27,49 @@ public class Player2Controller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.RightShift) && haspuck)
+        {
+            shoot(movement);
+        }
+
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            rb.drag = 0;
+            charging = true;
+        }
+
+        if (Input.GetKeyUp(KeyCode.O))
+        {
+            rb.drag = 0.9f;
+            charging = false;
+        }
+
+        if (Input.GetKeyDown(KeyCode.LeftBracket) && haspuck == false)
+        {
+            if (currentdir == direction.downleft)
+                Instantiate(pokecheck, transform.position + new Vector3(-0.68f, -0.68f, 0), Quaternion.Euler(0, 0, 0));
+
+            else if (currentdir == direction.left)
+                Instantiate(pokecheck, transform.position + new Vector3(-0.97f, 0, 0), Quaternion.Euler(0, 0, -45));
+
+            else if (currentdir == direction.upleft)
+                Instantiate(pokecheck, transform.position + new Vector3(-0.68f, 0.68f, 0), Quaternion.Euler(0, 0, -90));
+
+            else if (currentdir == direction.up)
+                Instantiate(pokecheck, transform.position + new Vector3(0, 0.97f, 0), Quaternion.Euler(0, 0, -135));
+
+            else if (currentdir == direction.upright)
+                Instantiate(pokecheck, transform.position + new Vector3(0.68f, 0.68f, 0), Quaternion.Euler(0, 0, -180));
+
+            else if (currentdir == direction.right)
+                Instantiate(pokecheck, transform.position + new Vector3(0.97f, 0, 0), Quaternion.Euler(0, 0, -225));
+
+            else if (currentdir == direction.downright)
+                Instantiate(pokecheck, transform.position + new Vector3(0.68f, -0.68f, 0), Quaternion.Euler(0, 0, -270));
+
+            else if (currentdir == direction.down)
+                Instantiate(pokecheck, transform.position + new Vector3(0, -0.97f, 0), Quaternion.Euler(0, 0, -315));
+        }
     }
 
     void shoot(Vector2 direction)
@@ -83,7 +126,7 @@ public class Player2Controller : MonoBehaviour
 
         float xMovement = Input.GetAxis("Horizontal2");
         float yMovement = Input.GetAxis("Vertical2");
-        Vector2 movement = new Vector2(xMovement, yMovement);
+        movement = new Vector2(xMovement, yMovement);
 
         if (charging == false && stuntimer <= 0)
         {
@@ -107,49 +150,6 @@ public class Player2Controller : MonoBehaviour
                 GetComponent<SpriteRenderer>().enabled = true;
             else if (stuntimer < 1.66f)
                 GetComponent<SpriteRenderer>().enabled = false;
-        }
-
-        if (Input.GetKeyDown(KeyCode.RightShift) && haspuck){
-            shoot(movement);
-        }
-
-        if (Input.GetKeyDown(KeyCode.O))
-        {
-            rb.drag = 0;
-            charging = true;
-        }
-
-        if (Input.GetKeyUp(KeyCode.O))
-        {
-            rb.drag = 0.9f;
-            charging = false;
-        }
-
-        if (Input.GetKeyDown(KeyCode.LeftBracket) && haspuck == false)
-        {
-            if (currentdir == direction.downleft)
-                Instantiate(pokecheck, transform.position + new Vector3(-0.68f, -0.68f, 0), Quaternion.Euler(0, 0, 0));
-
-            else if (currentdir == direction.left)
-                Instantiate(pokecheck, transform.position + new Vector3(-0.97f, 0, 0), Quaternion.Euler(0, 0, -45));
-
-            else if (currentdir == direction.upleft)
-                Instantiate(pokecheck, transform.position + new Vector3(-0.68f, 0.68f, 0), Quaternion.Euler(0, 0, -90));
-
-            else if (currentdir == direction.up)
-                Instantiate(pokecheck, transform.position + new Vector3(0, 0.97f, 0), Quaternion.Euler(0, 0, -135));
-
-            else if (currentdir == direction.upright)
-                Instantiate(pokecheck, transform.position + new Vector3(0.68f, 0.68f, 0), Quaternion.Euler(0, 0, -180));
-
-            else if (currentdir == direction.right)
-                Instantiate(pokecheck, transform.position + new Vector3(0.97f, 0, 0), Quaternion.Euler(0, 0, -225));
-
-            else if (currentdir == direction.downright)
-                Instantiate(pokecheck, transform.position + new Vector3(0.68f, -0.68f, 0), Quaternion.Euler(0, 0, -270));
-
-            else if (currentdir == direction.down)
-                Instantiate(pokecheck, transform.position + new Vector3(0, -0.97f, 0), Quaternion.Euler(0, 0, -315));
         }
 
         if (xMovement != 0)

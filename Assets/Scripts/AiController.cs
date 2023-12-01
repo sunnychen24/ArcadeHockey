@@ -105,7 +105,10 @@ public class AiController : MonoBehaviour
 
     public void ResetState()
     {
-        state = AIState.Puck;
+        if (state != AIState.Goon)
+        {
+            state = AIState.Puck;
+        }
     }
 
     private void FixedUpdate()
