@@ -32,13 +32,13 @@ public class Player2Controller : MonoBehaviour
             shoot(movement);
         }
 
-        if (Input.GetKeyDown(KeyCode.O))
+        if (Input.GetKeyDown(KeyCode.O) && !haspuck)
         {
             rb.drag = 0;
             charging = true;
         }
 
-        if (Input.GetKeyUp(KeyCode.O))
+        if (Input.GetKeyUp(KeyCode.O) || haspuck)
         {
             rb.drag = 0.9f;
             charging = false;

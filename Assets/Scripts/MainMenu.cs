@@ -241,11 +241,11 @@ public class MainMenu : MonoBehaviour
         if (gameType % 2 == 0)
         {
             PlayerPrefs.SetInt("1", aiLevel);
-            SceneManager.LoadScene("AiTest");
+            SceneManager.LoadScene("1Player");
         }
         else
         {
-            SceneManager.LoadScene("GameControllerTest");
+            SceneManager.LoadScene("2Player");
         }
     }
 

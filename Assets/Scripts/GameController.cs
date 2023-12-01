@@ -23,6 +23,7 @@ public class GameController : MonoBehaviour
     private AudioSource audioSource;
     public AudioClip whistle;
     public AudioClip goalHorn;
+    private bool starting = true;
 
     // Start is called before the first frame update
     void Start()
@@ -34,10 +35,11 @@ public class GameController : MonoBehaviour
         scoreText = GameObject.Find("Score").GetComponent<TextMeshProUGUI>();
         audioSource = GetComponent<AudioSource>();
 
-        timer = 60 * PlayerPrefs.GetInt("0");
-
         scoreText.text = p1Score.ToString() + ":" + p2Score.ToString();
         PauseGame(false);
+
+        timer = 60 * PlayerPrefs.GetInt("0");
+        StartCoroutine(StartGame());
     }
 
     // Update is called once per frame
@@ -55,7 +57,7 @@ public class GameController : MonoBehaviour
             }
         }
 
-        if (timer > 0)
+        if (timer > 0 && !starting)
         {
             timer -= Time.deltaTime;
 
@@ -188,6 +190,16 @@ public class GameController : MonoBehaviour
             Time.timeScale = 1;
         }
         
+        yield return null;
+    }
+
+    private IEnumerator StartGame()
+    {
+        Time.timeScale = 0;
+        audioSource.PlayOneShot(whistle, 0.5f);
+        yield return new WaitForSecondsRealtime(3);
+        starting = false;
+        Time.timeScale = 1;
         yield return null;
     }
 

@@ -33,13 +33,13 @@ public class PlayerController : MonoBehaviour
             shoot(movement);
         }
 
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.Q) && !haspuck)
         {
             rb.drag = 0;
             charging = true;
         }
 
-        if (Input.GetKeyUp(KeyCode.Q))
+        if (Input.GetKeyUp(KeyCode.Q) || haspuck)
         {
             rb.drag = 0.9f;
             charging = false;
