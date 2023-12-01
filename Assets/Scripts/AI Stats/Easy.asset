@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1680e08661fe278429ade9448cbe9482, type: 3}
   m_Name: Easy
   m_EditorClassIdentifier: 
-  movespeed: 2
+  movespeed: 7
   shotpower: 45
   stunduration: 2
   pokecheck: 3
+  isGoon: 0

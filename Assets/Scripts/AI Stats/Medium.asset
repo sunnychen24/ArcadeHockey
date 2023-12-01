@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1680e08661fe278429ade9448cbe9482, type: 3}
   m_Name: Medium
   m_EditorClassIdentifier: 
-  movespeed: 3
+  movespeed: 12
   shotpower: 45
   stunduration: 1
   pokecheck: 1

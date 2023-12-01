@@ -380,6 +380,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Puck
       objectReference: {fileID: 0}
+    - target: {fileID: 4735727814289754335, guid: f94427a7f36f0174abcced28f5761a69, type: 3}
+      propertyPath: m_Mass
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4735727814289754335, guid: f94427a7f36f0174abcced28f5761a69, type: 3}
+      propertyPath: m_LinearDrag
+      value: 0.65
+      objectReference: {fileID: 0}
     - target: {fileID: 5226336253520853961, guid: f94427a7f36f0174abcced28f5761a69, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -493,6 +501,22 @@ PrefabInstance:
     - target: {fileID: 4547688683942538372, guid: 14b6be731fa5d4643a5780a4127d7a8b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4980764039817841881, guid: 14b6be731fa5d4643a5780a4127d7a8b, type: 3}
+      propertyPath: ai
+      value: 
+      objectReference: {fileID: 2124205350}
+    - target: {fileID: 4980764039817841881, guid: 14b6be731fa5d4643a5780a4127d7a8b, type: 3}
+      propertyPath: movescale
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4980764039817841881, guid: 14b6be731fa5d4643a5780a4127d7a8b, type: 3}
+      propertyPath: pokecheck
+      value: 
+      objectReference: {fileID: 1092421517637766156, guid: 9e1b28aac9252c0439a5fd19d375174a, type: 3}
+    - target: {fileID: 4980764039817841881, guid: 14b6be731fa5d4643a5780a4127d7a8b, type: 3}
+      propertyPath: shotspeed
+      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 7771204576571501577, guid: 14b6be731fa5d4643a5780a4127d7a8b, type: 3}
       propertyPath: m_Name
